@@ -1,0 +1,156 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Weather App</title>
+    <style>
+        /* CSS for styling and responsiveness */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .weather-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        .weather-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .weather-container select, .weather-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .weather-container button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .weather-container button:hover {
+            background-color: #0056b3;
+        }
+        .weather-container .weather-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="weather-container">
+    <h1>Static Weather App</h1>
+    <select id="citySelect">
+        <!-- Dropdown menu with 10 predefined cities -->
+        <option value="London">London</option>
+        <option value="New York">New York</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Paris">Paris</option>
+        <option value="Sydney">Sydney</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Cairo">Cairo</option>
+        <option value="Rio de Janeiro">Rio de Janeiro</option>
+        <option value="Moscow">Moscow</option>
+        <option value="Toronto">Toronto</option>
+    </select>
+    <button onclick="showWeather()">Show Weather</button>
+    <div class="weather-info" id="weatherInfo"></div>
+</div>
+
+<script>
+    // JavaScript to display static weather data
+    const weatherData = {
+        "London": {
+            "temperature": 15,
+            "description": "Cloudy",
+            "humidity": 80,
+            "windSpeed": 5
+        },
+        "New York": {
+            "temperature": 20,
+            "description": "Sunny",
+            "humidity": 50,
+            "windSpeed": 3
+        },
+        "Tokyo": {
+            "temperature": 22,
+            "description": "Partly cloudy",
+            "humidity": 65,
+            "windSpeed": 4
+        },
+        "Paris": {
+            "temperature": 18,
+            "description": "Rainy",
+            "humidity": 70,
+            "windSpeed": 6
+        },
+        "Sydney": {
+            "temperature": 25,
+            "description": "Sunny",
+            "humidity": 40,
+            "windSpeed": 8
+        },
+        "Mumbai": {
+            "temperature": 30,
+            "description": "Humid",
+            "humidity": 85,
+            "windSpeed": 2
+        },
+        "Cairo": {
+            "temperature": 35,
+            "description": "Clear sky",
+            "humidity": 30,
+            "windSpeed": 5
+        },
+        "Rio de Janeiro": {
+            "temperature": 28,
+            "description": "Thunderstorms",
+            "humidity": 75,
+            "windSpeed": 7
+        },
+        "Moscow": {
+            "temperature": 10,
+            "description": "Snowy",
+            "humidity": 90,
+            "windSpeed": 10
+        },
+        "Toronto": {
+            "temperature": 5,
+            "description": "Foggy",
+            "humidity": 95,
+            "windSpeed": 3
+        }
+    };
+
+    function showWeather() {
+        const city = document.getElementById('citySelect').value;
+        const data = weatherData[city];
+
+        const weatherInfo = `
+            <h2>${city}</h2>
+            <p>Temperature: ${data.temperature}°C</p>
+            <p>Weather: ${data.description}</p>
+            <p>Humidity: ${data.humidity}%</p>
+            <p>Wind Speed: ${data.windSpeed} m/s</p>
+        `;
+        document.getElementById('weatherInfo').innerHTML = weatherInfo;
+    }
+</script>
+
+</body>
+</html>
